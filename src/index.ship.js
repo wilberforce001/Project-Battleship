@@ -1,5 +1,5 @@
 
-class Ship {
+export class Ship {
     constructor(length) {
         this.length = length;
         this.hits = 0;
@@ -15,7 +15,7 @@ class Ship {
     }
 }
 
-class Gameboard {
+export class Gameboard {
     constructor() {
         this.grid = [];
         this.missedAttacks = [];
@@ -36,6 +36,14 @@ class Gameboard {
     allShipSunk() {
 
     }
-};
+}
 
-export default (Ship, Gameboard);
+export class Player {
+    constructor() {
+
+    }
+
+    attack(enemyGameboard, row, col) {
+        enemyGameboard.receiveAttack(row, col);
+    }
+}
