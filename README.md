@@ -40,3 +40,5 @@ Defined 'describe' functions for different tests which in jest is used to group 
 Immplemented a player class to interact with the Game and created a method for attacking the enemy Gameboard
 
 Implemented a computer player capable of making random plays and ensuring it doesn't shoot the same coordinate twice. 
+
+Created code that sets up the basic structure for a Battleship game with DOM interaction. It creates game boards for both the player and the computer, allows the player to input their attacks, and handles the computer's turns. The game loop continues until one of the players wins.
