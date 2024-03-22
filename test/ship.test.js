@@ -1,4 +1,4 @@
-import { Ship, Gameboard, Player } from '../src/index.ship';
+import { Ship, Gameboard, Player, ComputerPlayer } from '../src/index.ship';
 
 describe('ship class', () => {
     test('hit method increases hits count', () => {
@@ -71,3 +71,38 @@ describe('Player class', () => {
         expect(enemyGameboard.receiveAttack).toHaveBeenCalledWith(3, 4);
     })
 });
+
+describe('ComputerPlayer class', () => {
+
+    test('generateRandomAttack method should return valid coordinates', () => {
+
+        const computerPlayer = new ComputerPlayer();
+        const randomAttack = computerPlayer.generateRandomAttack();
+
+        expect(randomAttack).toHaveProperty('row');
+        expect(randomAttack).toHaveProperty('col');
+
+        // Check if the coordinates are within the gameboard range (0 to 9)
+        expect(randomAttack.row).toBeGreaterThanOrEqual(0);
+        expect(randomAttack.row).toBeLessThan(10);
+        expect(randomAttack.col).toBeGreaterThanOrEqual(0);
+        expect(randomAttack.col).toBeLessThan(10);
+
+    })
+
+    test('generateRandomAttack method should not generate the same attack twice', () => {
+
+        const computerPlayer = new ComputerPlayer();
+
+        //Generate multiple random attacks
+        const attacks = new Set();
+        for (let i = 0; i < 100; i++) {
+            const randomAttack = computerPlayer.generateRandomAttack(); // Corrected here
+            const attackString = `${randomAttack.row}, ${randomAttack.col}`;
+            attacks.add(attackString);
+        }
+
+        // Check if there are 100 unique attacks
+        expect(attacks.size).toBe(100);
+    })
+})

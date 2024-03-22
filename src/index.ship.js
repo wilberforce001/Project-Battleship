@@ -47,3 +47,24 @@ export class Player {
         enemyGameboard.receiveAttack(row, col);
     }
 }
+
+export class ComputerPlayer {
+    constructor() {
+        this.previousAttacks = new Set(); // Set to store previous attacks
+    } 
+
+    // Method for generating a random attack
+    generateRandomAttack() {
+        let row, col;
+        do {
+            
+            // Generate random coordinates within the gameboard range
+            row = Math.floor(Math.random() * 10);
+            col = Math.floor(Math.random() * 10);
+        } while (this.previousAttacks.has(`${row}, ${col}`)); // Repeat if the coordinate has been attacked before
+
+        this.previousAttacks.add(`${row}, ${col}`);
+
+        return { row, col };
+    }
+}

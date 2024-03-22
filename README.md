@@ -35,5 +35,8 @@ The hit() method increments the number of hits on the ship each time it is calle
     'receiveAttack(row, col)': Records the coordinates of a player's attack. If the attack hits a ship, the corresponding ship's hit() method should be called.
     'allShipsSunk()': Checks if all ships on the game board have been sunk.
 
-Defined 'describe function which in jest is used to group related test cases together
+Defined 'describe' functions for different tests which in jest is used to group related test cases together
 
+Immplemented a player class to interact with the Game and created a method for attacking the enemy Gameboard
+
+Implemented a computer player capable of making random plays and ensuring it doesn't shoot the same coordinate twice. 
